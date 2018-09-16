@@ -106,19 +106,13 @@ def analyze_results(predictions, labels):
     test_size = len(labels)
     positive_labels = sum(labels > 0)
 
-    error_cnt = test_size - accuracy_cnt
     accuracy = accuracy_cnt / test_size
-    #print("%d (%.2f) right predictions.\n%d (%.2f) wrong predictions."
-    #      % (accuracy_cnt, accuracy, error_cnt,
-    #         error_cnt / test_size))
 
     precision = 0 if true_positives + false_positives == 0 else (
         float(true_positives) / (true_positives + false_positives))
     recall = float(true_positives) / positive_labels
 
     print("Accuracy %.2f, Precision: %.2f, Recall %.2f" % (accuracy, precision, recall))
-
-    # ("PREDICTIONS:", prediction_vector)
 
     return accuracy, precision, recall
 
